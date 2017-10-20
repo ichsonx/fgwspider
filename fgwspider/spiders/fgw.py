@@ -1,12 +1,4 @@
 import scrapy
-from selenium import webdriver
-import time
-import re
-import json
-import os
-import datetime
-import sys
-import io
 
 class fgw(scrapy.Spider):
     name = "fgw"
@@ -16,7 +8,7 @@ class fgw(scrapy.Spider):
 
     def start_requests(self):
         start_urls = ['http://www.szpb.gov.cn/xxgk/qt/tzgg/index.htm']
-        for i in range(1, 1):
+        for i in range(1, 40):
             start_urls.append('http://www.szpb.gov.cn/xxgk/qt/tzgg/index_' + str(i) + '.htm')
         for url in start_urls:
             yield scrapy.Request(url=url, callback=self.parse)
@@ -26,7 +18,6 @@ class fgw(scrapy.Spider):
         #sys.getdefaultencoding()
         filename = 'result.txt'
         xpathmark = '//span[contains(text(), "环保")][contains(@class, "p_bt")]/../@href'
-        #xpathmark = '//span[contains(text(), "环保")][contains(@class, "p_bt")]/../'
         sel = scrapy.Selector(text=response.body)
         subSelectors = sel.xpath(xpathmark).extract()
 
