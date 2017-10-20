@@ -18,13 +18,17 @@ class fgw(scrapy.Spider):
         #sys.getdefaultencoding()
         filename = 'result.txt'
         xpathmark = '//span[contains(text(), "2015")][contains(@class, "p_bt")]/../@href'
+        xpathmark = '//span[contains(text(), "2015")][contains(@class, "p_bt")]'
         sel = scrapy.Selector(text=response.body)
         subSelectors = sel.xpath(xpathmark).extract()
 
-        print(len(subSelectors))
-        with open(filename, 'a+') as f:
-            for it in subSelectors:
-                content = 'http://www.szpb.gov.cn/xxgk/qt/tzgg/' + it.replace("./", "")
-                f.write(content + "\n")
+        for it in subSelectors:
+            print(it)
+
+        # print(len(subSelectors))
+        # with open(filename, 'a+') as f:
+        #     for it in subSelectors:
+        #         content = 'http://www.szpb.gov.cn/xxgk/qt/tzgg/' + it.replace("./", "")
+        #         f.write(content + "\n")
 
         return None
