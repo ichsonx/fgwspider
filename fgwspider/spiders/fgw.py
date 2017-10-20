@@ -7,7 +7,6 @@ import os
 import datetime
 import sys
 import io
-import chardet
 
 class fgw(scrapy.Spider):
     name = "fgw"
