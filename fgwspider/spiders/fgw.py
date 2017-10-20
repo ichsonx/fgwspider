@@ -17,7 +17,7 @@ class fgw(scrapy.Spider):
         #sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')
         #sys.getdefaultencoding()
         filename = 'result.txt'
-        xpathmark = '//span[contains(text(), "环保")][contains(@class, "p_bt")]/../@href'
+        xpathmark = '//span[contains(text(), "2015")][contains(@class, "p_bt")]/../@href'
         sel = scrapy.Selector(text=response.body)
         subSelectors = sel.xpath(xpathmark).extract()
 
